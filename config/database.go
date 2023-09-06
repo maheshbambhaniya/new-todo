@@ -6,7 +6,7 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-)	
+)
 
 const (
 	host     = "localhost"
