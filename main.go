@@ -44,6 +44,4 @@ func main() {
 
 	err := server.ListenAndServe()
 	helper.ErrorPanic(err)
-
-
 }

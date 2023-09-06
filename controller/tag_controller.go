@@ -22,7 +22,7 @@ func NewTagsController(service service.TagsService) *TagsController {
 	}
 }
 
-// create 
+// create
 func (controller *TagsController) Create(ctx *gin.Context) {
 	log.Info().Msg("create tags")
 	createTagsRequest := request.CreateTagsRequest{}
@@ -39,7 +39,7 @@ func (controller *TagsController) Create(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, webResponse)
 }
 
-//update 
+// update
 func (controller *TagsController) Update(ctx *gin.Context) {
 	log.Info().Msg("update tags")
 	updateTagsRequest := request.UpdateTagsRequest{}
@@ -62,7 +62,7 @@ func (controller *TagsController) Update(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, webResponse)
 }
 
-//delete
+// delete
 func (controller *TagsController) Delete(ctx *gin.Context) {
 	log.Info().Msg("delete tags")
 	tagId := ctx.Param("tagId")
@@ -79,7 +79,7 @@ func (controller *TagsController) Delete(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, webResponse)
 }
 
-//findAll
+// findAll
 func (controller *TagsController) FindById(ctx *gin.Context) {
 	log.Info().Msg("findbyid tags")
 	tagId := ctx.Param("tagId")
@@ -97,7 +97,6 @@ func (controller *TagsController) FindById(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, webResponse)
 }
 
-//
 func (controller *TagsController) FindAll(ctx *gin.Context) {
 	log.Info().Msg("findAll tags")
 	tagResponse := controller.tagsService.FindAll()
