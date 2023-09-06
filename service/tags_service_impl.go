@@ -47,7 +47,7 @@ func (t *TagsServiceImpl) FindAll() []reponse.TagsResponse {
 		tag := reponse.TagsResponse{
 			Id:       value.Id,
 			ItemName: value.ItemName,
-			Status:   value.ItemName,
+			Status:   value.Status,
 		}
 		tags = append(tags, tag)
 	}
