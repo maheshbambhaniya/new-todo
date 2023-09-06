@@ -2,7 +2,7 @@ package controller
 
 import (
 	"golang-todo-gin/data/request"
-	"golang-todo-gin/data/response"
+	reponse "golang-todo-gin/data/response"
 	"golang-todo-gin/helper"
 	"golang-todo-gin/service"
 	"net/http"
@@ -51,7 +51,7 @@ func (controller *TagsController) Update(ctx *gin.Context) {
 	helper.ErrorPanic(err)
 	updateTagsRequest.Id = id
 
-	controller.tagsService.Update(updateTagsRequest)
+	controller.tagsService.Updates(updateTagsRequest)
 
 	webResponse := reponse.Response{
 		Code:   http.StatusOK,

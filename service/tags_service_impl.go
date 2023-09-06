@@ -2,7 +2,7 @@ package service
 
 import (
 	"golang-todo-gin/data/request"
-	"golang-todo-gin/data/response"
+	reponse "golang-todo-gin/data/response"
 	"golang-todo-gin/helper"
 	"golang-todo-gin/model"
 	"golang-todo-gin/repository"
@@ -28,7 +28,7 @@ func (t *TagsServiceImpl) Create(tags request.CreateTagsRequest) {
 	helper.ErrorPanic(err)
 	tagModel := model.Tags{
 		ItemName: tags.ItemName,
-		Status: tags.Status,
+		Status:   tags.Status,
 	}
 	t.TagsRepository.Save(tagModel)
 }
@@ -45,8 +45,9 @@ func (t *TagsServiceImpl) FindAll() []reponse.TagsResponse {
 	var tags []reponse.TagsResponse
 	for _, value := range result {
 		tag := reponse.TagsResponse{
-			Id:   value.Id,
+			Id:       value.Id,
 			ItemName: value.ItemName,
+			Status:   value.ItemName,
 		}
 		tags = append(tags, tag)
 	}
@@ -60,16 +61,18 @@ func (t *TagsServiceImpl) FindById(tagsId int) reponse.TagsResponse {
 	helper.ErrorPanic(err)
 
 	tagResponse := reponse.TagsResponse{
-		Id:   tagData.Id,
+		Id:       tagData.Id,
 		ItemName: tagData.ItemName,
+		Status:   tagData.Status,
 	}
 	return tagResponse
 }
 
 // Update implements TagsService
-func (t *TagsServiceImpl) Update(tags request.UpdateTagsRequest) {
+func (t *TagsServiceImpl) Updates(tags request.UpdateTagsRequest) {
 	tagData, err := t.TagsRepository.FindById(tags.Id)
 	helper.ErrorPanic(err)
 	tagData.ItemName = tags.ItemName
-	t.TagsRepository.Update(tagData)
+	tagData.Status = tags.Status
+	t.TagsRepository.Updates(tagData)
 }

@@ -50,10 +50,11 @@ func (t *TagsRepositoryImpl) Save(tags model.Tags) {
 }
 
 // Update implements TagsRepository
-func (t *TagsRepositoryImpl) Update(tags model.Tags) {
+func (t *TagsRepositoryImpl) Updates(tags model.Tags) {
 	var updateTag = request.UpdateTagsRequest{
-		Id:   tags.Id,
+		Id:       tags.Id,
 		ItemName: tags.ItemName,
+		Status:   tags.Status,
 	}
 	result := t.Db.Model(&tags).Updates(updateTag)
 	helper.ErrorPanic(result.Error)

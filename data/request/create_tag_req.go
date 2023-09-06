@@ -1,6 +1,6 @@
 package request
 
-type CreateTagsRequest struct{
-	ItemName string `validate:"required, min=1,max=200" json="itemname"`
-	Status string `validate:"required, min=1,max=200" json="status"`
+type CreateTagsRequest struct {
+	ItemName string `json="itemname"`
+	Status   string `json="status"`
 }
